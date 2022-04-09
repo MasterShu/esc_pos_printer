@@ -45,7 +45,7 @@ class NetworkPrinter {
   }
 
   /// [delayMs]: milliseconds to wait after destroying the socket
-  void disconnect({int? delayMs}) async {
+  Future<void> disconnect({int? delayMs}) async {
     _socket.destroy();
     if (delayMs != null) {
       await Future.delayed(Duration(milliseconds: delayMs), () => null);
@@ -58,12 +58,12 @@ class NetworkPrinter {
   }
 
   void text(
-      String text, {
-        PosStyles styles = const PosStyles(),
-        int linesAfter = 0,
-        bool containsChinese = false,
-        int? maxCharsPerLine,
-      }) {
+    String text, {
+    PosStyles styles = const PosStyles(),
+    int linesAfter = 0,
+    bool containsChinese = false,
+    int? maxCharsPerLine,
+  }) {
     _socket.add(_generator.text(text,
         styles: styles,
         linesAfter: linesAfter,
@@ -121,12 +121,12 @@ class NetworkPrinter {
   }
 
   void imageRaster(
-      Image image, {
-        PosAlign align = PosAlign.center,
-        bool highDensityHorizontal = true,
-        bool highDensityVertical = true,
-        PosImageFn imageFn = PosImageFn.bitImageRaster,
-      }) {
+    Image image, {
+    PosAlign align = PosAlign.center,
+    bool highDensityHorizontal = true,
+    bool highDensityVertical = true,
+    PosImageFn imageFn = PosImageFn.bitImageRaster,
+  }) {
     _socket.add(_generator.imageRaster(
       image,
       align: align,
@@ -137,13 +137,13 @@ class NetworkPrinter {
   }
 
   void barcode(
-      Barcode barcode, {
-        int? width,
-        int? height,
-        BarcodeFont? font,
-        BarcodeText textPos = BarcodeText.below,
-        PosAlign align = PosAlign.center,
-      }) {
+    Barcode barcode, {
+    int? width,
+    int? height,
+    BarcodeFont? font,
+    BarcodeText textPos = BarcodeText.below,
+    PosAlign align = PosAlign.center,
+  }) {
     _socket.add(_generator.barcode(
       barcode,
       width: width,
@@ -155,11 +155,11 @@ class NetworkPrinter {
   }
 
   void qrcode(
-      String text, {
-        PosAlign align = PosAlign.center,
-        QRSize size = QRSize.Size4,
-        QRCorrection cor = QRCorrection.L,
-      }) {
+    String text, {
+    PosAlign align = PosAlign.center,
+    QRSize size = QRSize.Size4,
+    QRCorrection cor = QRCorrection.L,
+  }) {
     _socket.add(_generator.qrcode(text, align: align, size: size, cor: cor));
   }
 
@@ -172,11 +172,11 @@ class NetworkPrinter {
   }
 
   void textEncoded(
-      Uint8List textBytes, {
-        PosStyles styles = const PosStyles(),
-        int linesAfter = 0,
-        int? maxCharsPerLine,
-      }) {
+    Uint8List textBytes, {
+    PosStyles styles = const PosStyles(),
+    int linesAfter = 0,
+    int? maxCharsPerLine,
+  }) {
     _socket.add(_generator.textEncoded(
       textBytes,
       styles: styles,

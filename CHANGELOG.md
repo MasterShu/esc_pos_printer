@@ -1,3 +1,9 @@
+# CHANGELOG
+
+## [4.0.3+2] 09/07/2022
+
+- Update disconnect method
+
 ## [4.0.3]
 
 - Added optional delay param to `disconnect` method
